@@ -27,6 +27,9 @@ public class UserService implements UserInterface {
         if (userRepository.existsByAccountNumber(user.getAccount().getNumber())){
             throw new EntityNotFoundException("Este número de conta já existi!");
         }
+        if (userRepository.existsByCardNumber(user.getCard().getNumber())){
+            throw new EntityNotFoundException("Este número de cartão já existi!");
+        }
         return userRepository.save(user);
     }
 
