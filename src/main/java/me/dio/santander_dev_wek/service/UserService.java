@@ -4,7 +4,6 @@ import me.dio.santander_dev_wek.Interface.UserInterface;
 import me.dio.santander_dev_wek.exceptions.EntityNotFoundException;
 import me.dio.santander_dev_wek.model.User;
 import me.dio.santander_dev_wek.repository.UserRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +35,7 @@ public class UserService implements UserInterface {
     @Override
     public User update(Long id, User userUpdate) throws EntityNotFoundException {
         User userFound = findById(id);
-        BeanUtils.copyProperties(userUpdate, userFound, "id");
+        userFound.setName(userUpdate.getName());
         userRepository.save(userFound);
         return userFound;
     }
