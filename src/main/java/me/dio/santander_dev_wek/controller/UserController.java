@@ -19,35 +19,35 @@ public class UserController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Serviço para buscar todos usuários.")
+    @Operation(summary = "Buscar todos usuários.")
     public List<User> findAll(){
         return userService.findAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Serviço para buscar usuário por id.")
+    @Operation(summary = "Buscar usuário por id.")
     public User findById(@PathVariable Long id) throws EntityNotFoundException {
         return userService.findById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Serviço para criar novo usuário.")
+    @Operation(summary = "Criar novo usuário.")
     public User create(@RequestBody User user) throws EntityNotFoundException {
         return userService.create(user);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Serviço para atualizar usuário passando seu id.")
+    @Operation(summary = "Atualizar usuário por id.")
     public User update(@PathVariable Long id, @RequestBody User user) throws EntityNotFoundException {
         return userService.update(id, user);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Serviço para deletar usuário passando seu id.")
+    @Operation(summary = "Deletar usuário por id.")
     public void delete(@PathVariable Long id) throws EntityNotFoundException {
         userService.delete(id);
     }
